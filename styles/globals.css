@@ -1,16 +1,29 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  body {
+    @apply bg-[#1A1A1D] text-gray-300;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* width 
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-* {
-  box-sizing: border-box;
+
+::-webkit-scrollbar-track {
+  background: #ffe600; 
 }
+ 
+
+::-webkit-scrollbar-thumb {
+  background: rgb(54, 54, 54); 
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0); 
+}*/
