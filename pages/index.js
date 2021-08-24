@@ -1,7 +1,6 @@
 import Head from 'next/head'
-import Header from './components/Header'
-import Nav from './components/Nav'
-import Results from './components/Results'
+import Nav from '../components/Nav'
+import Results from '../components/Results'
 import Image from 'next/image'
 
 export default function Home() {
@@ -9,7 +8,7 @@ export default function Home() {
   <>
     <Head>
       <title>Drink Games</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/images/favicon.ico" />
     </Head> 
     
     <Nav />
@@ -22,7 +21,7 @@ export default function Home() {
 
     <div className="md:flex">
       
-        <Results className="" title="Medusa" location="/games/medusa" imgSrc="/img/games/medusa/logo.jpg"/>
+        <Results title="Medusa" location="/games/medusa" imgSrc="/images/games/medusa/logo.jpg"/>
       
     </div>
    </>

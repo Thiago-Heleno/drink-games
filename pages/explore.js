@@ -1,4 +1,4 @@
-import Results from "./components/Results";
+import Results from "../components/Results";
 
 
 function explore() {
@@ -6,7 +6,7 @@ function explore() {
     <>
     <p className="font-bold text-white m-5 text-2xl">Explore:</p>
     <div className="flex flex-col">
-      <Results className="" title="Medusa" location="/games/medusa" imgSrc="/img/games/medusa/logo.jpg"/>
+      <Results title="Medusa" location="/games/medusa" imgSrc="/images/games/medusa/logo.jpg"/>
     </div>
     </>
   )

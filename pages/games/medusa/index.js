@@ -1,14 +1,16 @@
 import {useEffect, useState} from 'react'
 import { useRouter } from 'next/router'
-import PlayerLeaderBoard from '../../components/GameComponents/playerLeaderBoard';
+import PlayerLeaderBoard from '../../../components/GameComponents/PlayerLeaderBoard';
+import AddPlayer from '../../../components/GameComponents/AddPlayer';
 
 
-const medusa = () => {
+const Medusa = () => {
   const [players, setPlayers] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
   const [round, setRound] = useState(false);
   const [playerName, setPlayerName] = useState();
-  const router = useRouter()
+  const [error, setError] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     if(router.query.gameStarted){
@@ -21,7 +23,18 @@ const medusa = () => {
   function addPlayer (name) {
     //let r = players.push({"name": name, "shots": 0})
     //setPlayers();
-    setPlayers([...players, {"name": name, "shots": 0}])
+    if(Object.keys(players).length == 0) {
+      setPlayers([...players, {"name": name, "shots": 0}])
+    }else {
+      for(var i = 0; i < Object.keys(players).length; i++){
+        if(players[i].name == name){
+          setError("Cannot have the same name as another player!");
+          return
+        }else{
+          setPlayers([...players, {"name": name, "shots": 0}])
+        }
+      }
+    }
   }
 
   function removePlayer (index) {
@@ -47,9 +60,22 @@ const medusa = () => {
   }
 
   
+  const AlertMessage = () => {
+    if(error == null) return null;
+    setTimeout(()=>{
+      setError()
+    }, 5000)
+    return(
+      <div className="bg-red-500 border-l-4 border-red-800 text-white p-4 position-absolute top-0" role="alert">
+        <p className="font-bold">Error</p>
+        <p>{error}</p>
+      </div>
+    )
+  }
+
   const playerObject = players.map((e, index) => {
     return(
-      <div className="mt-5 flex flex-row gap-2 bg-yellow-400 justify-between">
+      <div key={index} className="mt-5 flex flex-row gap-2 bg-yellow-400 justify-between">
         <p className="m-3 font-bold text-xl text-white">{e.name}</p>
         <button onClick={()=> removePlayer(e.name)} className="m-3 bg-red-500 text-white hover:bg-red-400 h-full w-20 cursor-pointer focus:outline-none">
           <span className="m-auto text-xl text-center text-white">Remove</span>
@@ -62,6 +88,7 @@ const medusa = () => {
 
   return (
     <>
+    <AlertMessage/>
     {gameStarted ?
     <div className="flex flex-col">
       <p className="text-2xl font-bold text-white">Penis</p>
@@ -71,8 +98,8 @@ const medusa = () => {
     <div className="m-5 flex flex-col">
       <p>(Read out Loud!)</p>
       <p className="text-4xl font-bold">Instructions:</p>
-      <p>Everyone sits around the table of shot glasses. Someone counts down from 3 to 1. Then everyone looks up at stares into another players eyes. If someone is staring back into another player's eyes both players shout ”MEDUSA!” and both players drink a shot.</p>
-
+      <p>Everyone sits around the table of shot glasses. Someone counts down from 3 to 1. Then everyone looks up at stares into another players eyes. If someone is staring back into another player{`'`}s eyes both players shout ”MEDUSA!” and both players drink a shot.</p>
+      
       <label className="text-center w-full text-white text-xl font-bold">Players:</label>
       <div className="m-auto my-5 bg-yellow-400">
         <div className="flex flex-row rounded-lg relative bg-transparent gap-1 m-2">
@@ -91,6 +118,8 @@ const medusa = () => {
         </div>
       </div>
 
+      <AddPlayer onClick={(value) => addPlayer(value)} onKeyDown={(value) => addPlayer(value)} />
+
       <button onClick={() => startGame()} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-auto focus:outline-none">Play!</button>
     
     {playerObject}
@@ -102,4 +131,4 @@ const medusa = () => {
 }
 
 
-export default medusa
+export default Medusa

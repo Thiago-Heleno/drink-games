@@ -1,7 +1,12 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/games/medusa": "pages/games/medusa.js",
-  "/": "pages/index.js"
+  "/account": "pages/account.html",
+  "/api/hello": "pages/api/hello.js",
+  "/explore": "pages/explore.html",
+  "/games/medusa": "pages/games/medusa.html",
+  "/": "pages/index.html",
+  "/search": "pages/search.html",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html"
 }
