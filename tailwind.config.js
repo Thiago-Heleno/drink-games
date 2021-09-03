@@ -20,6 +20,9 @@ module.exports = {
       animation: {
         appear: 'appear 0.3s ease-in-out forwards',
       },
+      fontFamily: {
+        sans: ['"Proxima Nova"', 'sans-serif']
+      }
     },
   },
   variants: {

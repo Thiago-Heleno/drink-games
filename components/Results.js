@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from "next/link"
 import {
   StarIcon,
@@ -5,34 +6,25 @@ import {
   PlayIcon
 } from '@heroicons/react/outline'
 
-function Results({title, location, imgSrc}) {
+function Results({title, location, imgSrc, description}) {
   return (
-    <div className="hover:opacity-80 w-96 group">
+    <div className="hover:opacity-80 max-w-sm group my-5 md:mr-3 m-auto md:m-0 md:my-5">
       <Link href={location}>
         <a className="grid grid-cols-1">
-         
-
-          <img alt="Game Thumbnail" src={imgSrc} className="rounded-t-xl pt-2 px-2 bg-gradient-to-br from-purple-400 to-pink-500 m-auto object-contain" width={300} height={200}/>
-          
-          <div className="flex flex-col m-auto mb-5 bg-gradient-to-br from-purple-400 to-pink-500
-            rounded-lg border-b-4 border-purple-500 hover:border-purple-500">
-            <div className=" flex flex-row justify-between">
-              <p className="group-hover:text-white text-left text-2xl p-5">{title}</p>
-              <div className="flex flex-row">
-                <div className="flex flex-row p-5">
-                  <UserGroupIcon className="h-8" />
-                  <p className="h-8 group-hover:text-white text-2xl">12</p>
-                </div>
-                <div className="flex flex-row p-5">
-                  <StarIcon className="h-8" />
-                  <p className="h-8 group-hover:text-white text-2xl">5</p>
-                </div>
-              </div>
-            </div>
-            <button className="m-auto flex flex-row rounded-lg bg-green-400 p-2 gap-1 mb-5 border-b-4 border-green-600">
-              <PlayIcon className="h-8"/>
-              <p className="font-bold text-xl">Play</p>
-            </button>
+          <Image className="rounded"  alt="Game Thumbnail" src={imgSrc} width={1920} height={1080}/>
+          <div className="absolute m-3 flex items-center bg-green-400 rounded p-2 opacity-90">
+            <PlayIcon className="h-5"/>
+            <p>Play</p>
+          </div>
+          <div className="p-2">
+            <p className="truncate max-w-md">{description}</p>
+            <h2 className="text-white font-bold text-lg">{title}</h2>
+            <p className="flex items-center">
+              <p>5</p>
+              <StarIcon className="h-5 mr-2"/>
+              <p>12+</p>
+              <UserGroupIcon className="h-5"/>
+            </p>
           </div>
         </a>
       </Link>

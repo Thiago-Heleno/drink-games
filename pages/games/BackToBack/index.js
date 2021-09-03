@@ -16,7 +16,7 @@ import en from '../../../locales/en'
 import ptBR from '../../../locales/pt-BR'
 
 
-const Medusa = () => {
+const TheFlipCupDrinkingGame = () => {
   const [players, setPlayers] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
   const [leaderboard, setLeaderboard] = useState(false);
@@ -128,7 +128,7 @@ const Medusa = () => {
       </>
       : gameStarted ?
       <div className="flex flex-col">
-        <p className="text-2xl font-bold text-white">Medusa Game</p>
+        <p className="text-2xl font-bold text-white">Back to Back Game</p>
         <PlayerLeaderBoard onClick={(value) => addShot(value)} players={players}/>
         <button onClick={()=>{setLeaderboard(true); router.query.gameStarted = "Ended"; router.query.players = JSON.stringify(players); router.push(router)}} className="mb-4 bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded m-auto focus:outline-none">End Game!</button>
       </div>
@@ -136,7 +136,7 @@ const Medusa = () => {
     <div className="m-5 flex flex-col">
       <p>(Read out Loud!)</p>
       <p className="text-4xl font-bold">Instructions:</p>
-      <p>{t.MedusaRules}</p>
+      <p>{t.BackToBackRules}</p>
       
       <AddPlayer onClick={(value) => addPlayer(value)} onKeyDown={(value) => addPlayer(value)} />
       <button onClick={() => startGame()} className="mb-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-auto focus:outline-none">Start Game!</button>
@@ -149,4 +149,4 @@ const Medusa = () => {
 }
 
 
-export default Medusa
+export default TheFlipCupDrinkingGame

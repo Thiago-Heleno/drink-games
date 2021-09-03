@@ -8,8 +8,16 @@ import {
 } from "@heroicons/react/outline"
 import HeaderItem from "./HeaderItem"
 import {useRef, useState, useEffect} from 'react'
+import { useRouter } from 'next/router'
+
+import en from '../locales/en'
+import ptBR from '../locales/pt-BR'
 
 function Header() {
+  let router = useRouter()
+  const {locale} = router;
+  const t = locale === 'en' ? en : ptBR;
+
   const [search, setSearch] = useState(false)
   const [searchQuery, setSearchQuery] = useState()
   const [searchResults, setSearchResults] = useState([{name: "A"}, {name: "B"}])
@@ -66,17 +74,17 @@ function Header() {
     items-center h-auto">
       <div className="flex flex-grow justify-evenly max-w-2xl">
         <Link href="/"><a>
-          <HeaderItem title="Home" Icon={HomeIcon}/>
+          <HeaderItem title={t.home} Icon={HomeIcon}/>
         </a></Link>
         <Link href="/explore"><a>
-          <HeaderItem title="Explore" Icon={TemplateIcon}/>
+          <HeaderItem title={t.explore} Icon={TemplateIcon}/>
         </a></Link>
         <Link href="/account"><a>
-          <HeaderItem title="Account" Icon={UserIcon}/>
+          <HeaderItem title={t.account} Icon={UserIcon}/>
         </a></Link>
         <div ref={domNode}>
         <button className="outline-none focus:outline-none" onClick={()=> {setSearch((search) => !search)}}>  
-          <HeaderItem title="Search" Icon={SearchIcon}/>
+          <HeaderItem title={t.search} Icon={SearchIcon}/>
         </button>
         {search &&
             <div>

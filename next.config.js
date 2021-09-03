@@ -15,4 +15,8 @@ module.exports = withPlugins([
   images: {
     domains: ["image.imdb.org"]
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'pt-BR'],
+  },
 })
